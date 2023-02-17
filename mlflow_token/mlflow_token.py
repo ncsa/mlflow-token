@@ -30,8 +30,8 @@ def run():
 
     r = requests.post(realm_url+"/device", data=[("client_id", client_id)])
     device_code = r.json()['device_code']
-    print(f"Visit this link to authorize access to MLFlow instance {client_id}")
-    print(r.json()['verification_uri_complete'])
+    print(f"Visit this link to authorize access to MLFlow instance {client_id}", file=sys.stderr)
+    print(r.json()['verification_uri_complete'], file=sys.stderr)
 
     token_query_url = realm_url.replace("protocol/openid-connect/auth",
                                         "protocol/openid-connect/token")
@@ -49,7 +49,4 @@ def run():
         if r2.status_code==200:
             token = r2.json()['access_token']
 
-    os.environ["MLFLOW_TRACKING_TOKEN"] = token
-
-    if "--echo" in sys.argv:
-        print(f"export MLFLOW_TRACKING_TOKEN={token}")
+        print(f"MLFLOW_TRACKING_TOKEN={token}")
