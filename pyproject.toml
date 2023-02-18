@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "mlflow-token"
-version = "1.0.0-alpha.1"
+version = "1.0.0"
 description = "Command line tool to retreive access token for mlflow instance"
 authors = ["Ben Galewsky <bengal1@illinois.edu>"]
 license = "BSD-3-Clause"
