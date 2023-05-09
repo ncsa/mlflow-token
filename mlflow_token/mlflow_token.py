@@ -25,6 +25,8 @@ def _get_keycloak_realm_and_client(mlflow_url: str):
     """
     keycloak_query = requests.get(f"{mlflow_url}/oauth2/start", allow_redirects=False)
     keycloak_url = urllib.parse.urlparse(keycloak_query.next.url)
+    if not keycloak_url.query:
+        raise Exception("MLFLOW_TRACKING_URI malformed. Make sure there is no trailing slash")
     client_id = urllib.parse.parse_qs(keycloak_url.query)['client_id'][0]
 
     # Blank out the query args
