@@ -16,7 +16,7 @@ If you want to authenticate to an MLFlow instance from within a Jupyter notebook
 you can add the following lines to a cell:
 ```python
 import mlflow_token
-mlflow_token.setup_mlflow_environment("https://mlflow-demo.software-dev.ncsa.illinois.edu/")
+mlflow_token.setup_mlflow_environment("https://mlflow-demo.software-dev.ncsa.illinois.edu")
 ```
 This will update the notebook's `os.environ` so you can immediately use the 
 mlflow SDK. The token will eventually expire, so you may need to occasionally 
